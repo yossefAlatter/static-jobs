@@ -53,17 +53,23 @@ window.onload = () => {
         var remover = document.querySelectorAll(".remove");
         var mavo = document.querySelectorAll(".mavo");
         for (let i = 0; i <= remover.length; i++) {
-          if (remover.length > 0) {
+          // if (remover.length > 0) {
             remover[i].onclick = () => {
+              
               mavo[i].remove();
+              if(i == 0){
+                myStore.splice(0,i);
+              }else{
                 myStore.splice(i);
+              }
+                
+                
                 for (let key in myObj) {
                     for (let i2 of myStore) {
-                      console.log(i2);
                       if (myObj[key].includes(i2)) {
                         ind = true;
                       } else {
-                        ind = false;
+                        // ind = false;
                         break;
                       }
                     }
@@ -76,11 +82,21 @@ window.onload = () => {
               
               
               
+              if(searcher.innerText==""){
+                searcher.style.display = "none";
+                myStore = [];
+                console.log("i work")
+              }else{
+                
+
+              }
+              console.log(myStore.length);
+              console.log(myStore);
               if (myStore.length === 0) {
                 searcher.style.display = "none";
               }
             };
-          }
+          
         }
       } catch (err) {}
     };
